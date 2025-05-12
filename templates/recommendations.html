@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommendations for User {{ user_id }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+<body>
+<div class="container mt-5">
+    <h2 class="text-center">Recommendations for User {{ user_id }}</h2>
+    <h3>User-Based Recommendations</h3>
+    <ul class="list-group">
+        {% for index, row in user_recs.iterrows() %}
+            <li class="list-group-item">{{ row['title'] }} - Rating: {{ row['rating'] }}</li>
+        {% endfor %}
+    </ul>
+    <h3 class="mt-4">Item-Based Recommendations</h3>
+    <ul class="list-group">
+        {% for index, row in item_recs.iterrows() %}
+            <li class="list-group-item">{{ row['title'] }} - Score: {{ row['score'] }}</li>
+        {% endfor %}
+    </ul>
+    <a href="/" class="btn btn-secondary mt-3">Back</a>
+</div>
+</body>
+</html>
